@@ -26,6 +26,8 @@ async function onSearchForm(e) {
     hideShowMoreBtn();
     resetMarkup();
 
+    refs.gallery.removeEventListener('click', showFullPhoto);
+
     return;
   }
 
@@ -71,4 +73,21 @@ function hideShowMoreBtn() {
 
 function showShowMoreBtn() {
   refs.showMoreBtn.classList.remove('is-hidden');
+}
+
+refs.gallery.addEventListener('click', showFullPhoto);
+
+function showFullPhoto(e) {
+  e.preventDefault();
+
+  if (e.target.nodeName !== 'IMG') {
+    return;
+  }
+
+  const imgLinkEl = e.target.closest('.photo-link');
+
+  let gallery = new SimpleLightbox(imgLinkEl, {
+    captionDelay: 250,
+    overlayOpacity: 0.5,
+  });
 }
