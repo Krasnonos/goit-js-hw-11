@@ -1,41 +1,101 @@
 .wrapp {
   position: fixed;
-  display: block;
-  width: 100%;
-  height: 50px;
-  padding-top: 13px;
-  padding-bottom: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  padding-top: 15px;
+  padding-bottom: 15px;
   background-color: #82b74b;
 }
 
 .search-form {
   position: relative;
-  display: flex;
   align-items: center;
-  width: 290px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 input[name='searchQuery'] {
   padding: 5px;
+  height: 30px;
   border-radius: 7px;
-  height: 25px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
 }
 
 button[type='submit'] {
   position: absolute;
-  left: 178px;
-  top: 4px;
+  top: 5px;
+  right: 0;
   background-color: transparent;
   border: none;
-}
-
-.search-svg {
-  display: block;
-  margin-top: px;
 }
 
 button[type='submit']:hover .search-svg {
   fill: #82b74b;
 }
+
+/* -----------------IMG--------------- */
+/* .gallery {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 50px;
+  margin: -10px;
+}
+
+.photo-card {
+  display: block;
+  width: calc(100% / 4 - 20px);
+  margin: 10px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.img-thumb {
+  width: 100%;
+  height: 150px;
+}
+
+.photo-card img {
+  display: inline-block;
+  object-fit: cover;
+}
+
+.info {
+}
+.info-item {
+} */
+
+/* --------homework------------ */
+
+/* .gallery {
+  display: grid;
+  max-width: 1140px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-auto-rows: 240px;
+  grid-gap: 12px;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 50px;
+}
+
+.photo-card {
+  position: relative;
+  display: block;
+  height: 300px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+img:hover {
+  transform: scale(1.03);
+}
+
+img {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform var(--animation-duration) var(--timing-function);
+} */
