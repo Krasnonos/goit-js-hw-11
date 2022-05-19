@@ -95,3 +95,7 @@ img {
   background-color: #82b74b;
   border: 2px solid inherit;
 }
+
+.load-more.is-hidden {
+  display: none;
+}

@@ -1,5 +1,3 @@
-const Handlebars = require('handlebars');
-
 import Notiflix from 'notiflix';
 import imgTemplate from '../hbs/img-template.hbs';
 import fetchApiByName from '../api-service/pixabay-service';
@@ -21,27 +19,44 @@ async function onSearchForm(e) {
   const inputValue = e.currentTarget.elements.searchQuery.value;
 
   if (inputValue === '') {
-    console.log('empty form');
+    Notiflix.Notify.failure('Please enter something in search field');
+
+    hideShowMoreBtn();
+    resetMarkup();
+
     return;
   }
 
+  API.resetPage();
   API.queryValue(inputValue);
 
   const result = await API.fetchDataFromPixabay();
+
   resetMarkup();
-  reWrightMarkup(result);
+  rewrightMarkup(result);
+  showShowMoreBtn();
 }
 
 async function onShowMore() {
   API.increasePage();
+
   const result = await API.fetchDataFromPixabay();
-  reWrightMarkup(result);
+
+  rewrightMarkup(result);
 }
 
-function reWrightMarkup(markup) {
+function rewrightMarkup(markup) {
   refs.gallery.insertAdjacentHTML('beforeend', imgTemplate(markup));
 }
 
 function resetMarkup() {
   refs.gallery.innerHTML = '';
+}
+
+function hideShowMoreBtn() {
+  refs.showMoreBtn.classList.add('is-hidden');
+}
+
+function showShowMoreBtn() {
+  refs.showMoreBtn.classList.remove('is-hidden');
 }

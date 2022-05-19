@@ -3,7 +3,7 @@ const axios = require('axios');
 export default class fetchByName {
   constructor() {
     this.page = 1;
-    this.value = 'cat';
+    this.value = '';
   }
 
   async fetchDataFromPixabay() {
@@ -14,7 +14,7 @@ export default class fetchByName {
     try {
       return await axios.get(`${BASIC_URL}?key=${URL_KEY}&${queryString}`);
     } catch (error) {
-      console.error(error);
+      Notiflix.Notify.failure('Something happened. Please try again');
     }
   }
 
