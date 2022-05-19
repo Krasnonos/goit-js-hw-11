@@ -33,9 +33,10 @@ async function onSearchForm(e) {
   try {
     const result = await API.fetchDataFromPixabay();
 
+    API.setTotalHits(result.data.totalHits);
     resetMarkup();
     rewrightMarkup(result);
-    Notiflix.Notify.success(`Hooray! We found ${result.data.total} images.`);
+    Notiflix.Notify.success(`Hooray! We found ${API.totalHits} images.`);
     showShowMoreBtn();
   } catch (error) {
     Notiflix.Notify.failure(
@@ -50,7 +51,8 @@ async function onShowMore() {
   const result = await API.fetchDataFromPixabay();
 
   rewrightMarkup(result);
-  Notiflix.Notify.success(`Hooray! We found ${result.data.total} images.`);
+  API.lastTotalHits();
+  Notiflix.Notify.success(`Hooray! We found ${API.totalHits} images.`);
 }
 
 function rewrightMarkup(markup) {
