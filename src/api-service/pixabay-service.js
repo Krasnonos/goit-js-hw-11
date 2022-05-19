@@ -31,10 +31,3 @@ export default class fetchByName {
     this.page = 1;
   }
 }
-
-function chekResponse(response) {
-  if (!response.data.total) {
-    console.log('err');
-    throw new Error('error');
-  }
-}
