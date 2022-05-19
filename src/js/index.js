@@ -5,6 +5,10 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const API = new fetchApiByName();
+// const lightbox = new SimpleLightbox('.photo-link', {
+//   overlayOpacity: 0.4,
+//   animationSpeed: 100,
+// });
 
 const refs = {
   form: document.querySelector('.search-form'),
@@ -58,7 +62,10 @@ async function onShowMore() {
 
   rewrightMarkup(result);
   API.lastTotalHits();
-
+  const lightbox = new SimpleLightbox('.photo-link', {
+    overlayOpacity: 0.4,
+    animationSpeed: 100,
+  });
   Notiflix.Notify.success(`Hooray! We found ${API.totalHits} images.`);
 }
 
@@ -89,8 +96,12 @@ function showFullPhoto(e) {
     return;
   }
 
+  const currentEl = e.target.closest('.photo-link');
+
   const lightbox = new SimpleLightbox('.photo-link', {
     overlayOpacity: 0.4,
     animationSpeed: 100,
   });
+  //   lightBox('.photo-link');
+  //   lightbox.open('.photo-link');
 }
