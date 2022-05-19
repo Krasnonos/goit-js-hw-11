@@ -58,6 +58,7 @@ async function onShowMore() {
 
   rewrightMarkup(result);
   API.lastTotalHits();
+
   Notiflix.Notify.success(`Hooray! We found ${API.totalHits} images.`);
 }
 
@@ -88,5 +89,8 @@ function showFullPhoto(e) {
     return;
   }
 
-  var lightbox = new SimpleLightbox('.photo-link');
+  const lightbox = new SimpleLightbox('.photo-link', {
+    overlayOpacity: 0.4,
+    animationSpeed: 100,
+  });
 }
