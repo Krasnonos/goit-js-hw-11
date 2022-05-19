@@ -4,6 +4,7 @@ export default class fetchByName {
   constructor() {
     this.page = 1;
     this.value = '';
+    this.totalHits = null;
   }
 
   async fetchDataFromPixabay() {
@@ -29,5 +30,13 @@ export default class fetchByName {
 
   resetPage() {
     this.page = 1;
+  }
+
+  setTotalHits(hits) {
+    this.totalHits = hits;
+  }
+
+  lastTotalHits() {
+    this.totalHits -= 40;
   }
 }
