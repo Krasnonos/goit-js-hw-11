@@ -26,7 +26,7 @@ async function onSearchForm(e) {
     hideShowMoreBtn();
     resetMarkup();
 
-    refs.gallery.removeEventListener('click', showFullPhoto);
+    // refs.gallery.removeEventListener('click', showFullPhoto);
 
     return;
   }
@@ -40,7 +40,9 @@ async function onSearchForm(e) {
     API.setTotalHits(result.data.totalHits);
     resetMarkup();
     rewrightMarkup(result);
+
     Notiflix.Notify.success(`Hooray! We found ${API.totalHits} images.`);
+
     showShowMoreBtn();
   } catch (error) {
     Notiflix.Notify.failure(
@@ -75,6 +77,8 @@ function showShowMoreBtn() {
   refs.showMoreBtn.classList.remove('is-hidden');
 }
 
+// ---------------- simplebox---------------
+
 refs.gallery.addEventListener('click', showFullPhoto);
 
 function showFullPhoto(e) {
@@ -85,9 +89,4 @@ function showFullPhoto(e) {
   }
 
   const imgLinkEl = e.target.closest('.photo-link');
-
-  let gallery = new SimpleLightbox(imgLinkEl, {
-    captionDelay: 250,
-    overlayOpacity: 0.5,
-  });
 }

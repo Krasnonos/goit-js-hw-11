@@ -13,6 +13,7 @@ export default class fetchByName {
     const queryString = `q=${this.value}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`;
 
     const response = await axios.get(`${BASIC_URL}?key=${URL_KEY}&${queryString}`);
+
     if (!response.data.total) {
       throw new Error('error');
       return;
