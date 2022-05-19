@@ -30,11 +30,18 @@ async function onSearchForm(e) {
   API.resetPage();
   API.queryValue(inputValue);
 
-  const result = await API.fetchDataFromPixabay();
+  try {
+    const result = await API.fetchDataFromPixabay();
 
-  resetMarkup();
-  rewrightMarkup(result);
-  showShowMoreBtn();
+    resetMarkup();
+    rewrightMarkup(result);
+    Notiflix.Notify.success(`Hooray! We found ${result.data.total} images.`);
+    showShowMoreBtn();
+  } catch (error) {
+    Notiflix.Notify.failure(
+      'Sorry, there are no images matching your search query. Please try again.',
+    );
+  }
 }
 
 async function onShowMore() {
@@ -43,6 +50,7 @@ async function onShowMore() {
   const result = await API.fetchDataFromPixabay();
 
   rewrightMarkup(result);
+  Notiflix.Notify.success(`Hooray! We found ${result.data.total} images.`);
 }
 
 function rewrightMarkup(markup) {

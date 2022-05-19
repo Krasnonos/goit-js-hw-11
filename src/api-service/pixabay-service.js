@@ -11,11 +11,12 @@ export default class fetchByName {
     const URL_KEY = '27491593-aa922f21d022df769349f5779';
     const queryString = `q=${this.value}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`;
 
-    try {
-      return await axios.get(`${BASIC_URL}?key=${URL_KEY}&${queryString}`);
-    } catch (error) {
-      Notiflix.Notify.failure('Something happened. Please try again');
+    const response = await axios.get(`${BASIC_URL}?key=${URL_KEY}&${queryString}`);
+    if (!response.data.total) {
+      throw new Error('error');
+      return;
     }
+    return response;
   }
 
   queryValue(newValue) {
@@ -28,5 +29,12 @@ export default class fetchByName {
 
   resetPage() {
     this.page = 1;
+  }
+}
+
+function chekResponse(response) {
+  if (!response.data.total) {
+    console.log('err');
+    throw new Error('error');
   }
 }
