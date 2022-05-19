@@ -48,6 +48,7 @@ button[type='submit']:hover .search-svg {
 }
 
 .photo-link {
+  color: black;
   text-decoration: none;
   width: calc(100% / 4 - 14px);
   margin: 7px;
