@@ -1,6 +1,8 @@
 import Notiflix from 'notiflix';
 import imgTemplate from '../hbs/img-template.hbs';
 import fetchApiByName from '../api-service/pixabay-service';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const API = new fetchApiByName();
 

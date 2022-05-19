@@ -47,7 +47,7 @@ button[type='submit']:hover .search-svg {
   padding-right: 15px;
 }
 
-.photo-card {
+.photo-link {
   width: calc(100% / 4 - 14px);
   margin: 7px;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
@@ -55,7 +55,7 @@ button[type='submit']:hover .search-svg {
   transition: transform, 250ms, linear;
 }
 
-.photo-card:hover {
+.photo-link:hover {
   transform: scale(1.03);
 }
 
