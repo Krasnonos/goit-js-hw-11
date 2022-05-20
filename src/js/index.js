@@ -25,13 +25,7 @@ async function onSearchForm(e) {
   const inputValue = e.currentTarget.elements.searchQuery.value;
 
   if (inputValue === '') {
-    Notiflix.Notify.failure('Please enter something in search field');
-
-    hideShowMoreBtn();
-    resetMarkup();
-
-    refs.gallery.removeEventListener('click', showFullPhoto);
-
+    chekInputNotEmpty();
     return;
   }
 
@@ -58,14 +52,21 @@ async function onSearchForm(e) {
 async function onShowMore() {
   API.increasePage();
 
+  if (API.totalHits <= 20) {
+    chekEndOfTotalHits();
+    return;
+  }
+
   const result = await API.fetchDataFromPixabay();
 
   rewrightMarkup(result);
   API.lastTotalHits();
+
   const lightbox = new SimpleLightbox('.photo-link', {
     overlayOpacity: 0.4,
     animationSpeed: 100,
   });
+
   Notiflix.Notify.success(`Hooray! We found ${API.totalHits} images.`);
 }
 
@@ -83,6 +84,20 @@ function hideShowMoreBtn() {
 
 function showShowMoreBtn() {
   refs.showMoreBtn.classList.remove('is-hidden');
+}
+
+function chekInputNotEmpty() {
+  Notiflix.Notify.failure('Please enter something in search field');
+
+  hideShowMoreBtn();
+  resetMarkup();
+
+  // refs.gallery.removeEventListener('click', showFullPhoto);
+}
+
+function chekEndOfTotalHits() {
+  hideShowMoreBtn();
+  Notiflix.Notify.info("We're sorry, but you've reached the end of search results");
 }
 
 // ---------------- simplebox---------------
