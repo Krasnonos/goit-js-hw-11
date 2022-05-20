@@ -61,6 +61,7 @@ async function onShowMore() {
   const result = await API.fetchDataFromPixabay();
 
   rewrightMarkup(result);
+  scrollAfterShowMore();
   API.lastTotalHits();
 
   lightbox.refresh();
@@ -93,4 +94,17 @@ function chekInputNotEmpty() {
 function chekEndOfTotalHits() {
   hideShowMoreBtn();
   Notiflix.Notify.info("We're sorry, but you've reached the end of search results");
+}
+
+function scrollAfterShowMore() {
+  let verticalParams = 0;
+
+  const intervalId = setInterval(() => {
+    window.scrollBy(0, verticalParams);
+    verticalParams += 1;
+    console.log(verticalParams);
+    if (verticalParams === 20) {
+      clearInterval(intervalId);
+    }
+  }, 20);
 }
