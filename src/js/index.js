@@ -35,10 +35,10 @@ async function onSearchForm(e) {
   try {
     const result = await API.fetchDataFromPixabay();
 
-    API.setTotalHits(result.data.totalHits);
     resetMarkup();
     rewrightMarkup(result);
 
+    API.setTotalHits(result.data.totalHits);
     lightbox.refresh();
     Notiflix.Notify.success(`Hooray! We found ${API.totalHits} images.`);
 
@@ -62,8 +62,8 @@ async function onShowMore() {
 
   rewrightMarkup(result);
   scrollAfterShowMore();
-  API.lastTotalHits();
 
+  API.lastTotalHits();
   lightbox.refresh();
   Notiflix.Notify.success(`Hooray! We found ${API.totalHits} images.`);
 }
