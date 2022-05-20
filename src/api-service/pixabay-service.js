@@ -16,7 +16,6 @@ export default class fetchByName {
 
     if (!response.data.total) {
       throw new Error('error');
-      return;
     }
     return response;
   }
