@@ -5,10 +5,10 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const API = new fetchApiByName();
-// const lightbox = new SimpleLightbox('.photo-link', {
-//   overlayOpacity: 0.4,
-//   animationSpeed: 100,
-// });
+const lightbox = new SimpleLightbox('.photo-link', {
+  overlayOpacity: 0.4,
+  animationSpeed: 100,
+});
 
 const refs = {
   form: document.querySelector('.search-form'),
@@ -39,6 +39,7 @@ async function onSearchForm(e) {
     resetMarkup();
     rewrightMarkup(result);
 
+    lightbox.refresh();
     Notiflix.Notify.success(`Hooray! We found ${API.totalHits} images.`);
 
     showShowMoreBtn();
@@ -62,11 +63,7 @@ async function onShowMore() {
   rewrightMarkup(result);
   API.lastTotalHits();
 
-  const lightbox = new SimpleLightbox('.photo-link', {
-    overlayOpacity: 0.4,
-    animationSpeed: 100,
-  });
-
+  lightbox.refresh();
   Notiflix.Notify.success(`Hooray! We found ${API.totalHits} images.`);
 }
 
@@ -91,32 +88,9 @@ function chekInputNotEmpty() {
 
   hideShowMoreBtn();
   resetMarkup();
-
-  // refs.gallery.removeEventListener('click', showFullPhoto);
 }
 
 function chekEndOfTotalHits() {
   hideShowMoreBtn();
   Notiflix.Notify.info("We're sorry, but you've reached the end of search results");
-}
-
-// ---------------- simplebox---------------
-
-refs.gallery.addEventListener('click', showFullPhoto);
-
-function showFullPhoto(e) {
-  e.preventDefault();
-
-  if (e.target.nodeName !== 'IMG') {
-    return;
-  }
-
-  const currentEl = e.target.closest('.photo-link');
-
-  const lightbox = new SimpleLightbox('.photo-link', {
-    overlayOpacity: 0.4,
-    animationSpeed: 100,
-  });
-  //   lightBox('.photo-link');
-  //   lightbox.open('.photo-link');
 }
