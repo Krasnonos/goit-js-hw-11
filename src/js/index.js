@@ -102,7 +102,7 @@ function scrollAfterShowMore() {
   const intervalId = setInterval(() => {
     window.scrollBy(0, verticalParams);
     verticalParams += 1;
-    console.log(verticalParams);
+
     if (verticalParams === 20) {
       clearInterval(intervalId);
     }
